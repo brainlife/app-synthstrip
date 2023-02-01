@@ -17,7 +17,7 @@ outdir_mask=output_mask
 [ ! -f ${outdir_t1}/t1.nii.gz ] && mri_synthstrip -i ${input} -o ${outdir_t1}/t1.nii.gz -m ${outdir_mask}/mask.nii.gz
 
 # final check
-if [ -f ${outdir_mask} ]; then
+if [ -f ${outdir_mask}/mask.nii.gz ]; then
 	echo "complete"
 	exit 0
 else
