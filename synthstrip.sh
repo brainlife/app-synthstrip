@@ -4,7 +4,7 @@ set -ex
 
 # configurable inputs
 input=`jq -r '.input' config.json`
-input_type=`jq -r '.input_type' config.json
+input_type=`jq -r '.input_type' config.json`
 border=`jq -r '.border' config.json`
 
 # make output directories
