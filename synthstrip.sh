@@ -4,6 +4,7 @@ set -ex
 
 # configurable inputs
 input=`jq -r '.input' config.json`
+input_type=`jq -r '.input_type' config.json
 border=`jq -r '.border' config.json`
 
 # make output directories
@@ -14,7 +15,7 @@ outdir_mask=output_mask
 [ ! -d ${outdir_mask} ] && mkdir -p ${outdir_mask}
 
 # run synthstrip to get mask and brain extracted image
-[ ! -f ${outdir_t1}/t1.nii.gz ] && mri_synthstrip -i ${input} -o ${outdir_t1}/t1.nii.gz -m ${outdir_mask}/mask.nii.gz
+[ ! -f ${outdir_t1}/${input_type}.nii.gz ] && mri_synthstrip -i ${input} -o ${outdir_t1}/${input_type}.nii.gz -m ${outdir_mask}/mask.nii.gz
 
 # final check
 if [ -f ${outdir_mask}/mask.nii.gz ]; then
