@@ -19,7 +19,7 @@ outdir_mask=output_mask
 [ ! -f ${outdir_mask}/mask.nii.gz ] && mri_synthstrip -i ${input} -o tmp.nii.gz -m ${outdir_mask}/mask.nii.gz
 
 # mask dwi volumes
-[ ! -f ${outdir_t1}/${input_type}.nii.gz ] && mri_mask ${dwi} ${outdir_mask}/mask.nii.gz ${outdir_t1}/${input_type}.nii.gz
+[ ! -f ${outdir_t1}/${input_type}.nii.gz ] && mri_mask ${func} ${outdir_mask}/mask.nii.gz ${outdir_t1}/${input_type}.nii.gz
 
 # final check
 if [ -f ${outdir_mask}/mask.nii.gz ]; then
