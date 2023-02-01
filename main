@@ -3,4 +3,5 @@
 #PBS -N app-synthstrip
 
 set -ex
+[ ! -f nodif.nii.gz ] && time singularity exec -e docker://brainlife/fsl:6.0.4 ./select_nodif.nii.gz
 time singularity exec -e docker://brainlife/freesurfer:7.3.2 ./synthstrip.sh
