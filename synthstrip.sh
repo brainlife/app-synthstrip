@@ -3,11 +3,9 @@
 set -ex
 
 # configurable inputs
-dwi=`jq -r '.input' config.json`
+func=`jq -r '.input' config.json`
 input=nodif.nii.gz
-input_type=dwi
-bvals=`jq -r '.bvals' config.json`
-bvecs=`jq -r '.bvecs' config.json`
+input_type=bold
 border=`jq -r '.border' config.json`
 
 # make output directories
@@ -26,8 +24,6 @@ outdir_mask=output_mask
 # final check
 if [ -f ${outdir_mask}/mask.nii.gz ]; then
 	echo "complete"
-	cp ${bvals} ${outdir_t1}/${input_type}.bvals
-	cp ${bvecs} ${outdir_t1}/${input_type}.bvecs
 	rm -rf tmp.nii.gz nodif.nii.gz
 	exit 0
 else
