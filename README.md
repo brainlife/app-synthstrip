@@ -10,7 +10,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -20,20 +20,20 @@ Extracts the first volume of the BOLD series with FSL fslselectvols, computes a 
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/func/task` |
-| 📤 **Outputs** | `neuro/func/task` · `neuro/mask` |
-| 🐳 **Container** | `brainlife/fsl:6.0.4` |
-| ⚙️ **Resources** | 4 CPUs · 20 GB memory · 0.5 h walltime |
-| 🔑 **Requires** | `FREESURFER_LICENSE` |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.726](https://doi.org/10.25663/brainlife.app.726) |
+| **Inputs** | `neuro/func/task` |
+| **Outputs** | `neuro/func/task` · `neuro/mask` |
+| **Container** | `brainlife/fsl:6.0.4` |
+| **Resources** | 4 CPUs · 20 GB memory · 0.5 h walltime |
+| **Requires** | `FREESURFER_LICENSE` |
+| **Run it** | [doi.org/10.25663/brainlife.app.726](https://doi.org/10.25663/brainlife.app.726) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `input` | `neuro/func/task` | yes | Task fMRI 4D BOLD image (with its events and optional sbref and physio files). |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
@@ -41,7 +41,7 @@ Extracts the first volume of the BOLD series with FSL fslselectvols, computes a 
 | `output_mask` | `neuro/mask` | Binary brain mask (mask.nii.gz) in functional space. |
 
 <details>
-<summary><b>⚙️ Parameters</b> (1)</summary>
+<summary><b>Parameters</b> (1)</summary>
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -51,7 +51,7 @@ Extracts the first volume of the BOLD series with FSL fslselectvols, computes a 
 
 <!-- brainlife-app:end -->
 
-## 🏷️ Versions on brainlife.io
+## Versions on brainlife.io
 
 One App per input datatype, built from a branch of this repository.
 
@@ -63,9 +63,9 @@ One App per input datatype, built from a branch of this repository.
 | Generate brain extracted image with SynthStrip (T2w) | `neuro/anat/t2w` | [`7.3.2`](https://github.com/brainlife/app-synthstrip/tree/7.3.2) | [doi:10.25663/brainlife.app.723](https://doi.org/10.25663/brainlife.app.723) | current |
 | Generate brain extracted image with SynthStrip (T1w) | `neuro/anat/t1w` | [`7.3.2`](https://github.com/brainlife/app-synthstrip/tree/7.3.2) | [doi:10.25663/brainlife.app.722](https://doi.org/10.25663/brainlife.app.722) | current |
 
-## 🚀 Running the App
+## Running the App
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App for your datatype from the table above, choose the image from your project and press **Execute**. The App runs `mri_synthstrip` from FreeSurfer 7.3.2, a deep-learning brain extraction tool that works across contrasts and resolutions. Each App outputs the brain-extracted image, with the same datatype as the input and tagged `brain_extracted`, and a binary brain mask (`neuro/mask`) in the input image space.
 
@@ -73,7 +73,7 @@ Open the App for your datatype from the table above, choose the image from your 
 - **DWI**: the b=0 volumes are averaged with FSL `select_dwi_vols`, the mask is computed from that mean b0 image and applied to every volume with `mri_mask`; bvals and bvecs are carried over. The DWI must include b=0 volumes.
 - **fMRI**: the mask is computed from the first volume of the BOLD series (FSL `fslselectvols`) and applied to every volume with `mri_mask`. Large head motion across the run is not accounted for.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/), [`jq`](https://jqlang.github.io/jq/) and a [FreeSurfer license](https://surfer.nmr.mgh.harvard.edu/registration.html). FreeSurfer 7.3.2 (and FSL for DWI and fMRI) run inside containers.
 
@@ -99,7 +99,7 @@ You need [Singularity/Apptainer](https://apptainer.org/), [`jq`](https://jqlang.
 
 The `border` option (mask border threshold in mm) is read from `config.json` but is not currently passed to `mri_synthstrip`.
 
-## 📦 Outputs
+## Outputs
 
 ```text
 output_t1/
@@ -108,12 +108,12 @@ output_mask/
 └── mask.nii.gz           binary brain mask in the input image space
 ```
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **`Please set FREESURFER_LICENSE in .bashrc`**: export the contents of your FreeSurfer `license.txt` as `FREESURFER_LICENSE` before running `./main`.
 - **`something went wrong. check logs`**: the brain-extracted image or mask was not produced. Check the job log for the `mri_synthstrip` error.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -125,11 +125,11 @@ output_mask/
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Brad Caron
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -148,6 +148,6 @@ output_mask/
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 [MIT](LICENSE). FreeSurfer itself is distributed under its own [license](https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense).
